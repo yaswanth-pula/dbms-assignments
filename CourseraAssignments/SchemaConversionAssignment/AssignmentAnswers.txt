@@ -1,0 +1,78 @@
+NOTE: Questions for Each Task Described in QuestionDoc 
+
+
+Task 1 : Find Insert, delete, update anamolies
+
+Solution:
+   Insertion Anamoly:
+   It is mandatory to know VisitNo and ProvNo to add new Patient to the table.
+   
+   Update Anamoly:
+   If we want to update ProvSpeciality by ProvNo D2, two rows will be effected.
+   
+   Delete Anamoly:
+   If we want to delete row by ProvNo D2, then two rows will be effected.  
+   
+   
+   
+Task 2 : Apply BCNF Rule over given FD's
+
+Solution:
+	List of Valid BCNF FD's
+	Determinant -> 
+	patZip -> patCity
+	patNo -> patAge, patZip
+	visitNo -> patNo, visitDate
+	provNo -> provSpecialty,provEmail
+	provNo, VisitNo ->Diagnosis  
+
+	Decomposed Tables using BCNF
+	
+	tableD1( patZip, patCity)
+	tableD2( patNo PK, patAge, patZip FK ref tableD1)
+	tableD3( visitNo PK, VisitDate, patNo FK ref tableD2)
+	tableD4( provNo, provEmail, provSpeciality) 
+	tableD5( ProvNo PK + FK ref tabel D4, VisitNo PK + FK ref tableD3 , Diagonsis )
+	 
+	
+	
+Task 3: List Violations of BCNF
+
+Solution:
+	Student table violates BCNF
+	since stdEmail (non-prime attribute) is determinant of 
+	stdNo (prime attribute) 
+	
+	Institution Table
+	since instName (non-prime attribute) is determinant of 	instNo (prime attribute)
+	
+	Lender Table doesn't violates BCNF.
+	
+
+
+Task 4: List FD's of OrderTable
+			 Violated Rows
+	OrdNo -> ItemNo  (1,2), (3,4) 
+	OrdNo -> QtyOrd  (3,4)
+	OrdNo -> CustNo  None 	
+	OrdNo -> CustBal None
+	OrdNo -> CustDisc None
+	OrdNo -> ItemPrice (1,2),(3,4)
+	OrdNo -> OrderDate None
+	
+	
+	   
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	
